@@ -4,7 +4,7 @@
 	"description": "Hotlinking issues bot for Discord & Github",
 	"main": "dist/index.js",
 	"author": "Charalampos Fanoulis <yo@fanoulis.dev> <https://fanoulis.dev>",
-	"license": "Apache-2.0",
+	"license": "MIT",
 	"repository": "https://github.com/cfanoulis/gitcord.git",
 	"bugs": "https://github.com/cfanoulis/gitcord/issues",
 	"scripts": {
