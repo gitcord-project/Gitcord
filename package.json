@@ -1,0 +1,84 @@
+{
+	"name": "gitcord",
+	"version": "3.0.0",
+	"description": "Hotlinking issues bot for Discord & Github",
+	"main": "dist/index.js",
+	"author": "Charalampos Fanoulis <yo@fanoulis.dev> <https://fanoulis.dev>",
+	"license": "Apache-2.0",
+	"repository": "https://github.com/cfanoulis/gitcord.git",
+	"bugs": "https://github.com/cfanoulis/gitcord/issues",
+	"scripts": {
+		"start": "node .",
+		"lint": "eslint --ext ts src --fix",
+		"update": "yarn upgrade-interactive --latest",
+		"build": "tsc -b src",
+		"clean": "tsc -b src --clean",
+		"watch": "tsc -b src -w",
+		"dev": "yarn build && yarn start"
+	},
+	"keywords": [
+		"discord.js",
+		"sapphire",
+		"github"
+	],
+	"private": true,
+	"dependencies": {
+		"@klasa/stopwatch": "^0.0.1",
+		"@klasa/type": "^0.0.1",
+		"@sapphire/decorators": "^1.0.2",
+		"@sapphire/event-iterator": "^1.0.0",
+		"@sapphire/framework": "github:sapphire-project/framework#build",
+		"@sapphire/utilities": "^1.0.2",
+		"colorette": "^1.2.1",
+		"discord.js": "^12.4.1",
+		"module-alias": "^2.2.2",
+		"node-fetch": "^2.6.1",
+		"reflect-metadata": "^0.1.13",
+		"ws": "^7.3.1",
+		"zlib-sync": "^0.1.7"
+	},
+	"devDependencies": {
+		"@sapphire/pieces": "github:sapphire-project/pieces#build",
+		"@skyra/eslint-config": "^5.3.1",
+		"@types/module-alias": "^2.0.0",
+		"@types/node": "^14.14.2",
+		"@types/node-fetch": "^2.5.7",
+		"@types/ws": "^7.2.7",
+		"@typescript-eslint/eslint-plugin": "^4.5.0",
+		"@typescript-eslint/parser": "^4.5.0",
+		"eslint": "^7.12.0",
+		"eslint-config-prettier": "^6.14.0",
+		"eslint-plugin-prettier": "^3.1.4",
+		"husky": "^4.3.0",
+		"lint-staged": "^10.4.2",
+		"prettier": "^2.1.1",
+		"pretty-quick": "^3.1.0",
+		"typescript": "^4.0.2"
+	},
+	"_moduleAliases": {
+		"@orm": "dist/lib/orm",
+		"@utils": "dist/lib/util",
+		"@lib": "dist/lib",
+		"@root": "dist"
+	},
+	"resolutions": {
+		"acorn": "^7.3.1",
+		"chalk": "^4.1.0",
+		"fs-nextra": "^0.5.1",
+		"lodash": "^4.17.20",
+		"minimist": "^1.2.2"
+	},
+	"engines": {
+		"node": ">=14",
+		"npm": ">=6"
+	},
+	"husky": {
+		"hooks": {
+			"commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+			"pre-commit": "yarn pretty-quick --staged && yarn lint-staged"
+		}
+	},
+	"lint-staged": {
+		"*.{js,ts}": "eslint --fix --ext js,ts"
+	}
+}
