@@ -52,9 +52,9 @@ export class PagedDisplay {
 				case this.options.emojis.previousPage:
 					await this.previousPage(pageMsg, reaction);
 					break;
-				case this.options.emojis.stopDisplay:
-					await this.stopDisplay(pageMsg);
-					break;
+				// case this.options.emojis.stopDisplay:
+				// 	await this.stopDisplay(pageMsg);
+				// 	break;
 			}
 		}
 
@@ -83,8 +83,8 @@ export class PagedDisplay {
 		await reaction.users.remove(this.user.id);
 	}
 
-	private async stopDisplay(pageMsg: Message) {
-		await pageMsg.reactions.removeAll();
-		this.iterator!.end();
-	}
+	// private async stopDisplay(pageMsg: Message) {
+	// 	await pageMsg.reactions.removeAll();
+	// 	this.iterator!.end();
+	// }
 }
