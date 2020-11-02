@@ -1,6 +1,6 @@
 import { FetchError } from '@lib/errors/FetchError';
 import { Events } from '@sapphire/framework';
-import { isThenable } from '@sapphire/utilities';
+import { isThenable, mergeObjects } from '@sapphire/utilities';
 import { Client } from 'discord.js';
 import nodeFetch, { RequestInit, Response } from 'node-fetch';
 
@@ -57,8 +57,16 @@ export async function fetch(url: string, options?: RequestInit | FetchResultType
 	} else if (typeof type === 'undefined') {
 		type = FetchResultTypes.JSON;
 	}
+	const fetchOptions = mergeObjects(
+		{
+			headers: {
+				'User-Agent': 'GitcordBot/v0.0.1 by @cfanoulis'
+			}
+		},
+		options
+	);
 
-	const result: Response = await nodeFetch(url, options);
+	const result: Response = await nodeFetch(url, fetchOptions);
 	if (!result.ok) throw new FetchError(url, result.status, await result.text());
 
 	switch (type) {
