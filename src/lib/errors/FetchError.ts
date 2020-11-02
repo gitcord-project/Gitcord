@@ -8,18 +8,18 @@ export class FetchError extends Error {
 	public readonly code: number;
 	/** The response returned as a string. */
 	public readonly response: string;
-	// eslint-disable-next-line @typescript-eslint/explicit-member-accessibility
-	#json: unknown;
+	/** internal JSON property */
+	private json: null | Record<string, unknown>;
 
 	public constructor(url: string, code: number, response: string) {
 		super(`Failed to request '${url}' with code ${code}.`);
 		this.url = url;
 		this.code = code;
 		this.response = response;
-		this.#json = null;
+		this.json = null;
 	}
 
 	public toJSON() {
-		return this.#json ?? (this.#json = JSON.parse(this.response));
+		return this.json ?? (this.json = JSON.parse(this.response));
 	}
 }
