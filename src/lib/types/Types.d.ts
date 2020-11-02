@@ -34,3 +34,9 @@ export const enum Permissions {
 	UseVad = 'useVad',
 	PrioritySpeaker = 'prioritySpeaker'
 }
+
+export interface GraphqlVariables {
+	owner: string;
+	repository: string;
+	number: string;
+}
