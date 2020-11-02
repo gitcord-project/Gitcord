@@ -1,4 +1,3 @@
-// Remove `.example` from the file extension to configure Evlyn
 import { LogLevel } from '@sapphire/framework';
 import { ClientOptions } from 'discord.js';
 
