@@ -10,6 +10,7 @@
 	"scripts": {
 		"start": "node .",
 		"lint": "eslint --ext ts src --fix",
+		"format": "prettier --write .github .vscode src .eslintrc.json package.json README.md tsconfig.base.json tsconfig.eslint.json",
 		"update": "yarn upgrade-interactive --latest",
 		"build": "tsc -b src",
 		"clean": "tsc -b src --clean",
@@ -29,8 +30,10 @@
 		"@sapphire/event-iterator": "^1.0.0",
 		"@sapphire/framework": "github:sapphire-project/framework#build",
 		"@sapphire/utilities": "^1.0.2",
+		"@types/jsonwebtoken": "^8.5.0",
 		"colorette": "^1.2.1",
 		"discord.js": "^12.4.1",
+		"jsonwebtoken": "^8.5.1",
 		"module-alias": "^2.2.2",
 		"node-fetch": "^2.6.1",
 		"reflect-metadata": "^0.1.13",
@@ -50,13 +53,12 @@
 		"eslint-config-prettier": "^6.15.0",
 		"eslint-plugin-prettier": "^3.1.4",
 		"husky": "^4.3.0",
-		"lint-staged": "^10.5.0",
+		"lint-staged": "^10.5.1",
 		"prettier": "^2.1.1",
 		"pretty-quick": "^3.1.0",
 		"typescript": "^4.0.5"
 	},
 	"_moduleAliases": {
-		"@orm": "dist/lib/orm",
 		"@utils": "dist/lib/util",
 		"@lib": "dist/lib",
 		"@root": "dist"
@@ -74,11 +76,10 @@
 	},
 	"husky": {
 		"hooks": {
-			"commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
 			"pre-commit": "yarn pretty-quick --staged && yarn lint-staged"
 		}
 	},
 	"lint-staged": {
-		"*.{js,ts}": "eslint --fix --ext js,ts"
+		"*.{js,ts}": "eslint --fix --ext ts"
 	}
 }
