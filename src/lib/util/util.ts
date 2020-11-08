@@ -4,6 +4,17 @@ import { isThenable, mergeObjects } from '@sapphire/utilities';
 import { Client } from 'discord.js';
 import nodeFetch, { RequestInit, Response } from 'node-fetch';
 
+export function getAllRegexMatches(regex: RegExp, string: string) {
+	let match = undefined;
+	let matches: string[] = [];
+
+	while ((match = regex.exec(string)) !== null) {
+		matches.push(match[1]);
+	}
+
+	return matches;
+}
+
 export function wrapAroundNumber(num: number, floor: number, ceiling: number) {
 	if (num < floor) return ceiling;
 	if (num > ceiling) return floor;
