@@ -35,8 +35,26 @@ export const enum Permissions {
 	PrioritySpeaker = 'prioritySpeaker'
 }
 
+export const enum IssueType {
+	None,
+	Issue,
+	Pullrequest,
+	Multiple
+}
+
 export interface GraphqlVariables {
 	owner: string;
 	repository: string;
 	number: string;
+}
+
+export interface Issue {
+	url: string;
+	title: string;
+	description: string;
+	locked: string;
+	author: {
+		login: string;
+		avatarUrl: string;
+	};
 }
