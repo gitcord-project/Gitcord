@@ -15,3 +15,4 @@ export const CLIENT_OPTIONS: ClientOptions = {
 };
 
 export const TOKEN = '';
+export const GH_TOKEN = '';
