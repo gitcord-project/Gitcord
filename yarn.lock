@@ -89,10 +89,10 @@
   resolved "https://registry.yarnpkg.com/@sapphire/decorators/-/decorators-1.0.3.tgz#b5642873e0ed018f7dc3a3f8422718b54d6a5b70"
   integrity sha512-FEjFaAYOU6oBsYEokI1xfMWg2iYstQWR8+56Q1xBWhbPaSn3wQXlzGl1L3E2WHJDWFGyBZ7PA54yASSUk3vd6A==
 
-"@sapphire/event-iterator@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@sapphire/event-iterator/-/event-iterator-1.0.1.tgz#5a58f94c2746da60693d6c0787262d4f9339f4ca"
-  integrity sha512-ZjyEMVY61piANvAy+D3tP7kx2knMFcgrVYWal/njUF3pS6c6zNXFy0gYDjhhcMMos3r6jpgGxdTcK+SW2sOw/Q==
+"@sapphire/event-iterator@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@sapphire/event-iterator/-/event-iterator-1.1.0.tgz#128e3a06c8ba23886f1947a8465edea4c6c05fdc"
+  integrity sha512-0piqO6+mjCje5jlPzvBClKDUNBaaqwubIkmxOZC3hSTpdmVD2bkvLrngOWQhX86jhDO9h6Ldkcy5zfFksTayYA==
 
 "@sapphire/framework@github:sapphire-project/framework#build":
   version "0.0.1"
@@ -114,10 +114,10 @@
   resolved "https://registry.yarnpkg.com/@sapphire/ratelimits/-/ratelimits-1.0.1.tgz#b700c052baaab3ba9b5a1d602801b68d3a4a08e4"
   integrity sha512-e42gO1L0CvmcJmjVCIqt+/r1bwmmPLVjXohkq7ONPbhez2mMpl47fr0rAlE13Hw7cBW++GzE/jkdS3dP+oH+6g==
 
-"@sapphire/utilities@^1.0.1", "@sapphire/utilities@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@sapphire/utilities/-/utilities-1.1.0.tgz#f0eb237240c4607301eb170f6cc7f27369ae1ab0"
-  integrity sha512-EPZS+Ho+1bVgt/DBlkof1rV4JK4fjS1kIyvFgrhV+AvJb9/5ohk+CzYDR44k79824DqpX2st6jNcLPybDLy9Pw==
+"@sapphire/utilities@^1.0.1", "@sapphire/utilities@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@sapphire/utilities/-/utilities-1.1.1.tgz#899b033312794ecfb48efa81b6e97ecc7b2879d4"
+  integrity sha512-G4I963k2bhBXRS+ZlpOLzDjks51MuZrBPsq8/hA7FUKbRkO1VizQAzY/cTQA1vVZI6jOHPxZRWJD0xWPNbjLuA==
 
 "@skyra/eslint-config@^5.3.1":
   version "5.3.3"
@@ -1768,12 +1768,7 @@ write@1.0.3:
   dependencies:
     mkdirp "^0.5.1"
 
-ws@^7.3.1:
-  version "7.3.1"
-  resolved "https://registry.yarnpkg.com/ws/-/ws-7.3.1.tgz#d0547bf67f7ce4f12a72dfe31262c68d7dc551c8"
-  integrity sha512-D3RuNkynyHmEJIpD2qrgVkc9DQ23OrN/moAwZX4L8DfvszsJxpjQuUq3LMx6HoYji9fbIOBY18XWBsAux1ZZUA==
-
-ws@^7.4.0:
+ws@^7.3.1, ws@^7.4.0:
   version "7.4.0"
   resolved "https://registry.yarnpkg.com/ws/-/ws-7.4.0.tgz#a5dd76a24197940d4a8bb9e0e152bb4503764da7"
   integrity sha512-kyFwXuV/5ymf+IXhS6f0+eAFvydbaBW3zjpT6hUdAh/hbVjTIB5EHBGi0bPoCLSK2wcuz3BrEkB9LrYv1Nm4NQ==
