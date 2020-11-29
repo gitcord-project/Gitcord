@@ -4,17 +4,6 @@ import { isThenable, mergeObjects } from '@sapphire/utilities';
 import { Client } from 'discord.js';
 import nodeFetch, { RequestInit, Response } from 'node-fetch';
 
-export function getAllRegexMatches(regex: RegExp, string: string) {
-	let match = undefined;
-	let matches: string[] = [];
-
-	while ((match = regex.exec(string)) !== null) {
-		matches.push(match[1]);
-	}
-
-	return matches;
-}
-
 export function wrapAroundNumber(num: number, floor: number, ceiling: number) {
 	if (num < floor) return ceiling;
 	if (num > ceiling) return floor;
@@ -71,7 +60,7 @@ export async function fetch(url: string, options?: RequestInit | FetchResultType
 	const fetchOptions = mergeObjects(
 		{
 			headers: {
-				'User-Agent': 'GitcordBot/v0.0.1 by @cfanoulis'
+				'User-Agent': 'GitcordBot by @cfanoulis'
 			}
 		},
 		options

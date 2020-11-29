@@ -1,13 +1,15 @@
-import { GraphqlVariables } from '@lib/types/Types';
-import { fetch } from '@utils/util';
 // import { readFileSync } from 'fs';
 // import { sign } from 'jsonwebtoken';
+
+import { Octokit } from '@octokit/rest';
 
 export class GithubApi {
 	/**
 	 * The GraphQL base endpoint
 	 */
 	public url = 'https://api.github.com/v4/graphql';
+
+	public octokit!: Octokit;
 
 	/**
 	 * The application's ID, as provided by GitHub
@@ -27,6 +29,7 @@ export class GithubApi {
 		// this.applcationId = applicationId;
 		// this.jwtPrivateKey = readFileSync(keyPath, 'utf-8');
 		this.token = token;
+		this.octokit = new Octokit({ auth: this.token, userAgent: `Gitcord by @cfanoulis` });
 	}
 
 	/**
@@ -50,21 +53,24 @@ export class GithubApi {
 	// 	});
 	// }
 
-	/**
-	 * Run a GraphQL query against Github
-	 * @param query The GraphQL query to run
-	 * @param variables Owner, repo and issue/PR number variables
-	 * @param key Installation token
-	 */
-	public runQuery<T = Record<string, unknown>>(query: string, variables: GraphqlVariables) {
-		return fetch<T>(this.url, {
-			body: JSON.stringify({ query, variables }),
-			headers: {
-				'User-Agent': 'GitcordBot/v0.0.1 by @cfanoulis',
-				Accept: 'application/vnd.github.v3+json',
-				Authentication: `Bearer ${this.token}`
+	public async getIssuesFromRepo(id: number, owner: string, repo: string) {
+		const {
+			data: {
+				number,
+				title,
+				body,
+				repository_url: repoUrl,
+				user: { login: username, avatar_url: avatarUrl, url: profileUrl },
+				labels
 			}
+		} = await this.octokit.issues.get({
+			owner,
+			repo,
+			issue_number: id
 		});
+
+		const issueLabels = labels.map((e) => e.name);
+		return { number, title, body, repoUrl, issueLabels, user: { username, avatarUrl, profileUrl } };
 	}
 
 	public static Queries = {

@@ -36,10 +36,8 @@ export const enum Permissions {
 }
 
 export const enum IssueType {
-	None,
 	Issue,
-	Pullrequest,
-	Multiple
+	PullRequest
 }
 
 export interface GraphqlVariables {
@@ -49,12 +47,10 @@ export interface GraphqlVariables {
 }
 
 export interface Issue {
-	url: string;
+	number: number;
 	title: string;
-	description: string;
-	locked: string;
-	author: {
-		login: string;
-		avatarUrl: string;
-	};
+	body: string;
+	repoUrl: string;
+	issueLabels: string[];
+	user: { username: string; avatarUrl: string; profileUrl: string };
 }

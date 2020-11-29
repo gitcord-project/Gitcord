@@ -1,5 +1,5 @@
 import { GithubApi } from '@lib/structures/GithubApi';
-import { IssueType } from './Types';
+import { Issue } from './Types';
 
 declare module 'discord.js' {
 	interface Client {
@@ -10,7 +10,6 @@ declare module 'discord.js' {
 	}
 
 	interface Message {
-		hasIssues: IssueType;
-		issueIDs: string[];
+		issues: Issue[];
 	}
 }
