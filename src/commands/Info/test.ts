@@ -11,6 +11,6 @@ import { Message, MessageEmbed } from 'discord.js';
 })
 export default class Help extends Command {
 	public async run(message: Message) {
-		return new PagedDisplay(message, (item) => new MessageEmbed().setDescription(item), ['hi', 'hihi']).run(message);
+		return new PagedDisplay(message, (item) => new MessageEmbed().setDescription(item), ['hi', 'hihi', 'despacito']).run(message);
 	}
 }
