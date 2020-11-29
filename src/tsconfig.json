@@ -10,7 +10,8 @@
 			"@root/*": ["*"]
 		},
 		"composite": true,
-		"declaration": true
+		"declaration": true,
+		"moduleResolution": "node"
 	},
 	"include": [".", "./languages/**/*.json"]
 }
