@@ -1,9 +1,9 @@
 import { EventIterator, EventIteratorOptions } from '@sapphire/event-iterator';
-import { mergeDefault } from '@sapphire/utilities';
+import { mergeDefault, mergeObjects } from '@sapphire/utilities';
 import { wrapAroundNumber } from '@utils/util';
-import { Message, MessageEmbed, MessageReaction, ReactionEmoji, User } from 'discord.js';
+import type { Message, MessageEmbed, MessageReaction, ReactionEmoji } from 'discord.js';
 
-export interface PagedDisplayOptions extends Partial<EventIteratorOptions<[MessageReaction]>> {
+export interface ReactionDisplayOptions extends Partial<EventIteratorOptions<[MessageReaction]>> {
 	noPageNumber?: boolean;
 	emojis: {
 		previousPage: string;
@@ -16,16 +16,15 @@ export class PagedDisplay {
 	private iterator: EventIterator<[MessageReaction]> | undefined;
 	private pages: (string | MessageEmbed)[];
 	private index = 0;
-	private options: PagedDisplayOptions;
-	private user: User;
+	private options: ReactionDisplayOptions;
+	private message: Message;
 
-	public constructor(message: Message, template: (item: string) => string | MessageEmbed, items: string[], options?: PagedDisplayOptions) {
-		this.user = message.author;
+	public constructor(message: Message, template: (item: string) => string | MessageEmbed, items: string[], options?: ReactionDisplayOptions) {
+		this.message = message;
 		this.options = mergeDefault(
 			{
 				idle: 50000,
 				limit: 15,
-				filter: this.iteratorFilter.bind(this),
 				emojis: {
 					previousPage: '◀️',
 					nextPage: '▶️',
@@ -43,18 +42,23 @@ export class PagedDisplay {
 			await pageMsg.react(emoji);
 		}
 
-		this.iterator = new EventIterator<[MessageReaction]>(message.client, 'messageReactionAdd', this.options);
+		this.iterator = new EventIterator<[MessageReaction]>(
+			message.client,
+			'messageReactionAdd',
+			mergeObjects(this.options, { filter: this.iteratorFilter.bind(this, pageMsg) })
+		);
 		for await (const [reaction] of this.iterator) {
+			await reaction.users.remove(this.message.author.id);
 			switch (reaction.emoji.name) {
 				case this.options.emojis.nextPage:
-					await this.nextPage(pageMsg, reaction);
+					await this.nextPage(pageMsg);
 					break;
 				case this.options.emojis.previousPage:
-					await this.previousPage(pageMsg, reaction);
+					await this.previousPage(pageMsg);
 					break;
-				// case this.options.emojis.stopDisplay:
-				// 	await this.stopDisplay(pageMsg);
-				// 	break;
+				case this.options.emojis.stopDisplay:
+					await this.stopDisplay(pageMsg);
+					break;
 			}
 		}
 
@@ -67,24 +71,26 @@ export class PagedDisplay {
 		return page;
 	}
 
-	private iteratorFilter([value]: [MessageReaction]) {
-		return Object.values(this.options.emojis).includes((value.emoji as ReactionEmoji).name) && value.users.cache.has(this.user.id);
+	private iteratorFilter(page: Message, [value]: [MessageReaction]) {
+		return (
+			value.message.id === page.id &&
+			value.users.cache.has(this.message.author.id) &&
+			Object.values(this.options.emojis).includes((value.emoji as ReactionEmoji).name)
+		);
 	}
 
-	private async nextPage(pageMsg: Message, reaction: MessageReaction) {
+	private async nextPage(pageMsg: Message) {
 		this.index = wrapAroundNumber(this.index + 1, 0, this.pages.length - 1);
 		await pageMsg.edit(this.pages[this.index]);
-		await reaction.users.remove(this.user.id);
 	}
 
-	private async previousPage(pageMsg: Message, reaction: MessageReaction) {
+	private async previousPage(pageMsg: Message) {
 		this.index = wrapAroundNumber(this.index - 1, 0, this.pages.length - 1);
 		await pageMsg.edit(this.pages[this.index]);
-		await reaction.users.remove(this.user.id);
 	}
 
-	// private async stopDisplay(pageMsg: Message) {
-	// 	await pageMsg.reactions.removeAll();
-	// 	this.iterator!.end();
-	// }
+	private async stopDisplay(pageMsg: Message) {
+		await pageMsg.reactions.removeAll();
+		this.iterator!.end();
+	}
 }
