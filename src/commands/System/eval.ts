@@ -17,7 +17,7 @@ import { inspect } from 'util';
 export default class EvalCommand extends Command {
 	public async run(message: Message, args: Args) {
 		const code = await args.pick('string');
-		const { success, result, time, type } = await this.eval(message, code);
+		const { success, result, time, type } = await this.eval(code);
 
 		return result.length > 2000
 			? this.resultToHastebin(message, success, time, result, type)
@@ -32,7 +32,7 @@ export default class EvalCommand extends Command {
 	}
 
 	// Eval the input
-	private async eval(message: Message, code: string) {
+	private async eval(code: string) {
 		const stopwatch = new Stopwatch();
 		let success: boolean | undefined = undefined;
 		let syncTime: string | undefined = undefined;
