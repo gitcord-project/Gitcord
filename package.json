@@ -27,7 +27,7 @@
 		"@klasa/stopwatch": "^0.0.1",
 		"@klasa/type": "^0.0.1",
 		"@octokit/rest": "^18.0.9",
-		"@sapphire/decorators": "^1.0.3",
+		"@sapphire/decorators": "^2.0.1",
 		"@sapphire/event-iterator": "^1.1.0",
 		"@sapphire/framework": "github:sapphire-project/framework#build",
 		"@sapphire/utilities": "^1.1.1",
