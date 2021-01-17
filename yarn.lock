@@ -181,10 +181,10 @@
   dependencies:
     "@types/node" ">= 8"
 
-"@sapphire/decorators@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@sapphire/decorators/-/decorators-1.0.3.tgz#b5642873e0ed018f7dc3a3f8422718b54d6a5b70"
-  integrity sha512-FEjFaAYOU6oBsYEokI1xfMWg2iYstQWR8+56Q1xBWhbPaSn3wQXlzGl1L3E2WHJDWFGyBZ7PA54yASSUk3vd6A==
+"@sapphire/decorators@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@sapphire/decorators/-/decorators-2.0.2.tgz#0f08e69863c99a9fbf7d78e921578249a92d1925"
+  integrity sha512-cofww4H8p8uwR8KqhYAbgOq5Qxq+IZNDC5tlQVXaq4phybPStd1+ttizGNHDKGxtFWocl9Q7o8TIU52fl1N+xg==
 
 "@sapphire/event-iterator@^1.1.0":
   version "1.1.0"
@@ -211,10 +211,10 @@
   resolved "https://registry.yarnpkg.com/@sapphire/ratelimits/-/ratelimits-1.1.0.tgz#274236efe51a785b758a7233708198b0ded710f9"
   integrity sha512-C+3AZ/AoLJR2h4hQK8heyGuYfKDzdOOA9MKlwSZrx0uKa9DypgajEAYjcOjrsAjhzQ9jatKvkQ4XKK5oTzp4LA==
 
-"@sapphire/utilities@^1.1.0", "@sapphire/utilities@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@sapphire/utilities/-/utilities-1.1.1.tgz#899b033312794ecfb48efa81b6e97ecc7b2879d4"
-  integrity sha512-G4I963k2bhBXRS+ZlpOLzDjks51MuZrBPsq8/hA7FUKbRkO1VizQAzY/cTQA1vVZI6jOHPxZRWJD0xWPNbjLuA==
+"@sapphire/utilities@^1.0.1", "@sapphire/utilities@^1.1.1":
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/@sapphire/utilities/-/utilities-1.4.3.tgz#cf5540ee79fdb63c9af64754c9db6d533f58c812"
+  integrity sha512-OS4Tvimwqa2iKusNeP3rPd3RnoRazbKHh1ANEzwbE6zawSTPstcehmIYJ1G02eDae/45H1nrOg37O67eAY8uOw==
 
 "@skyra/eslint-config@^5.3.1":
   version "5.3.3"
@@ -251,12 +251,7 @@
     "@types/node" "*"
     form-data "^3.0.0"
 
-"@types/node@*":
-  version "14.14.6"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.6.tgz#146d3da57b3c636cc0d1769396ce1cfa8991147f"
-  integrity sha512-6QlRuqsQ/Ox/aJEQWBEJG7A9+u7oSYl3mem/K8IzxXG/kAGbV1YPD9Bg9Zw3vyxC/YP+zONKwy8hGkSt1jxFMw==
-
-"@types/node@>= 8", "@types/node@^14.14.10":
+"@types/node@*", "@types/node@>= 8", "@types/node@^14.14.10":
   version "14.14.10"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.10.tgz#5958a82e41863cfc71f2307b3748e3491ba03785"
   integrity sha512-J32dgx2hw8vXrSbu4ZlVhn1Nm3GbeCFNw2FWL8S5QKucHGY0cyNwjdQdO+KMBZ4wpmC7KhLCiNsdk1RFRIYUQQ==
